@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>allegro_hand_keyboards</name>
+  <version>0.0.0</version>
+  <description>The allegro_hand_keyboards package</description>
+  <maintainer email="sean@todo.todo">sean</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_python</buildtool_depend> 
+  
+  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>allegro_hand_driver</depend>
+  <depend>yaml-cpp</depend>
+
+
+<export>                               
+   <build_type>ament_cmake</build_type> 
+</export> 
+</package>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package format="2">
+    <name>allegro_hand_controllers</name>
+    <version>0.0.0</version>
+    <description>The allegro_hand_controllers package</description>
+
+    <maintainer email="felixd@todo.todo">felixd</maintainer>
+
+    <license>BSD</license>
+
+    <!-- dependencies -->
+    <buildtool_depend>ament_cmake</buildtool_depend>
+    <buildtool_depend>ament_cmake_python</buildtool_depend>
+
+
+    <depend>allegro_hand_driver</depend>
+    <depend>bhand</depend>
+    <depend>rclcpp</depend>
+    <depend>rclpy</depend>
+    <depend>sensor_msgs</depend>
+    <depend>robot_state_publisher</depend>
+    <depend>yaml_cpp_vendor</depend>
+    <depend>launch</depend>
+    <depend>launch_ros</depend>
+    <!-- <run_depend>allegro_hand_description</run_depend> -->
+    <!-- <run_depend>allegro_hand_parameters</run_depend> -->
+
+    <!-- The export tag contains other, unspecified, tags -->
+    <export>
+        <!-- Other tools can request additional information be placed here -->
+        <build_type>ament_cmake</build_type>
+    </export>
+</package>

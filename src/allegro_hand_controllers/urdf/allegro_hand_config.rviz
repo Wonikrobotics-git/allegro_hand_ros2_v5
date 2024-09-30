@@ -1,0 +1,348 @@
+Panels:
+  - Class: rviz_common/Displays
+    Help Height: 138
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /Status1
+        - /RobotModel1
+      Splitter Ratio: 0.5
+    Tree Height: 492
+  - Class: rviz_common/Selection
+    Name: Selection
+  - Class: rviz_common/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz_common/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: ""
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz_default_plugins/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 1
+      Class: rviz_default_plugins/RobotModel
+      Collision Enabled: false
+      Description File: package://allegro_hand_controllers/urdf/allegro_hand_description_right.urdf
+      Description Source: Topic
+      Description Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /allegro_hand_description
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        link_0.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_1.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_10.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_11.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_11.0_tip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_12.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_13.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_14.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_15.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_15.0_tip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_2.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_3.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_3.0_tip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_4.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_5.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_6.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_7.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_7.0_tip:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_8.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_9.0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        palm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        world:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+      Mass Properties:
+        Inertia: false
+        Mass: false
+      Name: RobotModel
+      TF Prefix: ""
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Class: rviz_default_plugins/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: true
+        link_0.0:
+          Value: true
+        link_1.0:
+          Value: true
+        link_10.0:
+          Value: true
+        link_11.0:
+          Value: true
+        link_11.0_tip:
+          Value: true
+        link_12.0:
+          Value: true
+        link_13.0:
+          Value: true
+        link_14.0:
+          Value: true
+        link_15.0:
+          Value: true
+        link_15.0_tip:
+          Value: true
+        link_2.0:
+          Value: true
+        link_3.0:
+          Value: true
+        link_3.0_tip:
+          Value: true
+        link_4.0:
+          Value: true
+        link_5.0:
+          Value: true
+        link_6.0:
+          Value: true
+        link_7.0:
+          Value: true
+        link_7.0_tip:
+          Value: true
+        link_8.0:
+          Value: true
+        link_9.0:
+          Value: true
+        palm_link:
+          Value: true
+        world:
+          Value: true
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: false
+      Show Axes: false
+      Show Names: false
+      Tree:
+        world:
+          palm_link:
+            link_0.0:
+              link_1.0:
+                link_2.0:
+                  link_3.0:
+                    link_3.0_tip:
+                      {}
+            link_12.0:
+              link_13.0:
+                link_14.0:
+                  link_15.0:
+                    link_15.0_tip:
+                      {}
+            link_4.0:
+              link_5.0:
+                link_6.0:
+                  link_7.0:
+                    link_7.0_tip:
+                      {}
+            link_8.0:
+              link_9.0:
+                link_10.0:
+                  link_11.0:
+                    link_11.0_tip:
+                      {}
+      Update Interval: 0
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Enabled: true
+      Name: Marker
+      Namespaces:
+        {}
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: ""
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 200; 200; 200
+    Fixed Frame: palm_link
+    Frame Rate: 60
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/Measure
+      Line color: 128; 128; 0
+    - Class: rviz_default_plugins/SetInitialPose
+      Covariance x: 0.25
+      Covariance y: 0.25
+      Covariance yaw: 0.06853891909122467
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /initialpose
+    - Class: rviz_default_plugins/SetGoal
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /move_base_simple/goal
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 0.89094078540802
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.05999999865889549
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: -0.0003397595719434321
+        Y: 0.007185764145106077
+        Z: -0.007299293763935566
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05000000074505806
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.009999999776482582
+      Pitch: 0.08520367741584778
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz_default_plugins)
+      Yaw: 0.565399169921875
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 1671
+  Hide Left Dock: false
+  Hide Right Dock: true
+  QMainWindow State: 000000ff00000000fd0000000100000000000004470000062dfc0200000004fb000000100044006900730070006c006100790073010000003d000002b3000000c900fffffffb0000001200530065006c0065006300740069006f006e01000002f60000014f0000005c00fffffffb0000000a00560069006500770073010000044b000001c0000000a400fffffffb0000000800540069006d00650100000611000000590000003900ffffff000003ef0000062d00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Time:
+    collapsed: false
+  Views:
+    collapsed: false
+  Width: 2108
+  X: 2277
+  Y: 324

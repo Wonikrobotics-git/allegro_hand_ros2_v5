@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>bhand</name>
+  <version>0.0.0</version>
+  <description>Computing grasp configurations.</description>
+
+  <!-- One maintainer tag required, multiple allowed, one person per tag -->
+  <maintainer email="felix.duvallet@epfl.ch">Felix Duvallet</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Add dependencies -->
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
