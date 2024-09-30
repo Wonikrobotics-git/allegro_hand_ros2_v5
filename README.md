@@ -2,7 +2,7 @@
 # Allegro Hand V5 ROS2
 
 This is the official release to control Allegro Hand V5 with ROS2. Mostly, it is based on the old release of Allegro Hand V5 ROS1 package.
-You can find our latest Allegro Hand V5 ROS1 package :(https://github.com/simlabrobotics/allegro_hand_ros_v4)
+You can find our latest Allegro Hand V5 ROS1 package :(https://github.com/Wonikrobotics-git/allegro_hand_ros_v4)
 And the interfaces and controllers have been improved and rewritten by Soohoon Yang(Hibo) from Wonik Robotics.
 
 We have integrated the core elements of two ROS packages(allegro_hand_description, allegro_hand_parameters) into a main package(allegro_hand_controllers).
