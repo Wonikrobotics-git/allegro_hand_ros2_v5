@@ -22,7 +22,7 @@ These packages are tested on ROS2 Foxy(Ubuntu 20.04) and Humble(Ubuntu 22.04). I
 
 ## Packages
 
-**From Allegro Hand V5, the hand is fully based on torque controller. 
+**From Allegro Hand V5, the hand is fully based on torque controller.** 
 
 - allegro_hand_controllers : Contain two main nodes for control the hand and urdf descriptions,meshes.
 	- node : Receive encoder data and compute torque using `computeDesiredTorque`.
