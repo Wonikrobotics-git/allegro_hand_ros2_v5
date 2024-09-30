@@ -57,7 +57,7 @@ mkdir allegro_ws
 2. Download ROS2 package for Allegro Hand V5 using below command.
 ~~~bash
 cd ~/allegro_ws
-git clone https://github.com/
+git clone https://github.com/Wonikrobotics-git/allegro_hand_ros2_v5.git
 ~~~
 
 3. Build.
