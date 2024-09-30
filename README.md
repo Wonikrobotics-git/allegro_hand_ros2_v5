@@ -14,7 +14,7 @@ We have integrated the core elements of two ROS packages(allegro_hand_descriptio
 - Save customize pose using MOVEIT2 and move to the saved pose.
 - Simply control hand with GUI tool instead of using keyboard.
 
-These packages are tested on ROS2 Foxy(Ubuntu 22.04) and Humble(Ubuntu 20.04). It will likely not work with newer versions(Rolling ...).
+These packages are tested on ROS2 Foxy(Ubuntu 20.04) and Humble(Ubuntu 22.04). It will likely not work with newer versions(Rolling ...).
 
 ## Useful Links
 - Official Allegro Hand Website : https://www.allegrohand.com/
@@ -90,7 +90,7 @@ roslaunch allegro_hand_controllers allegro_hand.launch HAND=right
 
 Optional arguments:
 ~~~
-	VISUALIZE:=true|false (default is false)
+VISUALIZE:=true|false (default is false)
 ~~~
 
 - If you want to visualize Allegro Hand on Rviz2:
