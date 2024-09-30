@@ -1,1 +1,100 @@
-# allegro_hand_ros2_v5
+
+# Allegro Hand V5 ROS2
+
+This is the official release to control Allegro Hand V5 with ROS2. Mostly, it is based on the old release of Allegro Hand V5 ROS1 package.
+You can find our latest Allegro Hand V5 ROS1 package :(https://github.com/simlabrobotics/allegro_hand_ros_v4)
+And the interfaces and controllers have been improved and rewritten by Soohoon Yang(Hibo) from Wonik Robotics.
+
+We have integrated the core elements of two ROS packages(allegro_hand_description, allegro_hand_parameters) into a main package(allegro_hand_controllers).
+
+**For now, we support one additional action.**
+- Visualize Allegro Hand V5 changing in real time using Rviz2.
+
+**We plan to update with more actions as they are developed:**
+- Save customize pose using MOVEIT2 and move to the saved pose.
+- Simply control hand with GUI tool instead of using keyboard.
+
+These packages are tested on ROS2 Foxy(Ubuntu 22.04) and Humble(Ubuntu 20.04). It will likely not work with newer versions(Rolling ...).
+
+## Useful Links
+- Official Allegro Hand Website : https://www.allegrohand.com/
+- Community Forum :  https://www.allegrohand.com/forum
+
+## Packages
+
+**From Allegro Hand V5, the hand is fully based on torque controller. 
+
+- allegro_hand_controllers : Contain two main nodes for control the hand and urdf descriptions,meshes.
+	- node : Receive encoder data and compute torque using `computeDesiredTorque`.
+	- grasp : Apply various pre-defined grasps or customized poses.
+- allegro_hand_driver : Main driver for sending and receiving data with the Allegro Hand.
+- allegro_hand_keyboard : Node that sends the command to control Allegro Hand. All commands need to be pre-defined.
+- bhand : Library files for the predefined grasps and actions., available on 64 bit versions.
+
+## Install the PCAN driver
+
+**With ROS2, you don't need to install PCAN driver anymore!**
+
+If you have already installed PCAN driver, please follow instructions below.
+- [Optional] Disable previously installed PEAK-CAN driver.
+~~~bash
+# Temporarily
+sudo rmmod pcan
+sudo modprobe peak_usb
+
+# Permanent
+rm /etc/modprobe.d/pcan.conf
+rm /etc/modprobe.d/blacklist-peak.conf
+~~~
+
+## Run main controller nodes
+
+1. Make new workspace.
+~~~bash
+mkdir allegro_ws
+~~~
+
+2. Download ROS2 package for Allegro Hand V5 using below command.
+~~~bash
+cd ~/allegro_ws
+git clone https://github.com/
+~~~
+
+3. Build.
+~~~bash
+cd ~/allegro_ws
+colcon build
+~~~
+
+4. Launch allegro main node.
+~~~bash
+source install/setup.bash
+ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right
+~~~
+**Please check 'Launch file instructions below'.**
+
+5. Run allegro hand keyboard node.
+~~~bash
+cd ~/allegro_ws
+source install/setup.bash
+ros2 run allegro_hand_keyboard allegro_hand_keyboard
+~~~
+
+6. Control Hand using Keyboard command.
+## Launch file instructions
+
+Same as the ROS1 package, you can simply control Allegro Hand V5 by launching [[AllegroHand/Allegro Hand ROS1 (Ubuntu 20.04)/allegro_hand_ros_v5-4finger/src/allegro_hand_controllers/launch/allegro_hand.launch|allegro_hand.launch]]. At a minimum, you must specify the handedness:
+~~~bash
+roslaunch allegro_hand_controllers allegro_hand.launch HAND=right
+~~~
+
+Optional arguments:
+~~~
+	VISUALIZE:=true|false (default is false)
+~~~
+
+- If you want to visualize Allegro Hand on Rviz2:
+~~~bash
+ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND=right VISUALIZE:=true
+~~~
+
