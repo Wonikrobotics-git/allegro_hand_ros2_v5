@@ -10,7 +10,6 @@ import getpass
 
 def generate_launch_description():
     allegro_hand_controllers_share = get_package_share_directory('allegro_hand_controllers')
-    allegro_hand_moveit_share = get_package_share_directory('allegro_hand_moveit')
     setup_can0_script = os.path.join(allegro_hand_controllers_share, 'scripts', 'setup_can0.sh')
 
     # Declare launch argument
@@ -19,17 +18,17 @@ def generate_launch_description():
         default_value='false',
         description='Flag to enable/disable visualization'
     )
-    
-    declare_moveit_arg = DeclareLaunchArgument(
-        'MOVEIT',
-        default_value='false',
-        description='Flag to enable/disable visualization'
-    )
 
     declare_hand_arg = DeclareLaunchArgument(
         'HAND',
         default_value='right',
         description='Specify which hand to use: right or left'
+    )
+    
+    declare_type_arg = DeclareLaunchArgument(
+        'TYPE',
+        default_value='A',
+        description='Specify which type to use: A(non-geared) or B(geared)'
     )
 
     declare_polling_arg = DeclareLaunchArgument(
@@ -52,18 +51,20 @@ def generate_launch_description():
         return []
         
     urdf_path = PythonExpression([
-        '"', allegro_hand_controllers_share, '/urdf/allegro_hand_description_', LaunchConfiguration('HAND'), '.urdf"'
+        '"', allegro_hand_controllers_share, '/urdf/allegro_hand_description_', LaunchConfiguration('HAND'),'_', LaunchConfiguration('TYPE'),'.urdf"'
     ])
 
     return LaunchDescription([
         declare_visualize_arg,
         declare_polling_arg,
+        declare_moveit_arg,
         OpaqueFunction(function=setup_can0),
         Node(
             package='allegro_hand_controllers',
             executable='allegro_node_grasp',
             output='screen',
-            parameters=[{'hand_info/which_hand': LaunchConfiguration('HAND')}], # Pass HAND argument to parameter
+            parameters=[{'hand_info/which_hand': LaunchConfiguration('HAND')}, # Pass HAND argument to parameter
+            		{'hand_info/which_type': LaunchConfiguration('TYPE')}],
             arguments=[LaunchConfiguration('POLLING')]
         ),
         Node(
@@ -81,10 +82,6 @@ def generate_launch_description():
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(os.path.join(allegro_hand_controllers_share, 'launch', 'allegro_viz.launch.py')),
             condition=IfCondition(LaunchConfiguration('VISUALIZE'))
-        ),
-        
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(os.path.join(allegro_hand_moveit_share, 'launch', 'demo.launch.py')),
-            condition=IfCondition(LaunchConfiguration('MOVEIT'))    
         )
+        
     ])
