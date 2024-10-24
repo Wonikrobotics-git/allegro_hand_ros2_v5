@@ -69,7 +69,7 @@ colcon build
 4. Launch allegro main node.
 ~~~bash
 source install/setup.bash
-ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right
+ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right TYPE:=A
 ~~~
 **Please check 'Launch file instructions below'.**
 
@@ -77,15 +77,15 @@ ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right
 ~~~bash
 cd ~/allegro_ws
 source install/setup.bash
-ros2 run allegro_hand_keyboard allegro_hand_keyboard
+ros2 run allegro_hand_keyboards allegro_hand_keyboard
 ~~~
 
 6. Control Hand using Keyboard command.
 ## Launch file instructions
 
-Same as the ROS1 package, you can simply control Allegro Hand V5 by launching *allegro_hand.launch.py* . At a minimum, you must specify the handedness:
+Same as the ROS1 package, you can simply control Allegro Hand V5 by launching *allegro_hand.launch.py* . At a minimum, you must specify the handedness and the hand type:
 ~~~bash
-roslaunch allegro_hand_controllers allegro_hand.launch HAND=right
+roslaunch allegro_hand_controllers allegro_hand.launch HAND:=right|left TYPE:=A|B
 ~~~
 
 Optional arguments:
@@ -95,6 +95,6 @@ VISUALIZE:=true|false (default is false)
 
 - If you want to visualize Allegro Hand on Rviz2:
 ~~~bash
-ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND=right VISUALIZE:=true
+ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right TYPE:=A VISUALIZE:=true
 ~~~
 
