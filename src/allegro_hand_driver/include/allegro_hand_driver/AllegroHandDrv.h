@@ -57,7 +57,7 @@ inline double x[4];
 inline double y[4];
 inline double z[4];
 inline int fingertip_sensor[4];
-
+inline int fingertip_sensor_pre[4];
 inline void* _can_handle;                      ///< CAN device(driver) handle
 
 
@@ -84,6 +84,8 @@ public:
     bool isJointInfoReady();                ///< return whether all joint positions are updated
     void resetJointInfoReady();             ///< reset joint position update flag
 
+    bool HAND_TYPE_A;                       ///< hand type  (A: non-geared ,  B: geared)
+    bool RIGHT_HAND;                        ///< handedness (right/left)
 private:
     void* _can_handle;                      ///< CAN device(driver) handle
 
@@ -108,7 +110,6 @@ private:
 
     volatile bool _emergency_stop;          ///< something goes wrong?
     
-    bool HAND_TYPE_A;                     ///< hand type(A: Geared, B: Non-Geared)
 
 private:
     void _readDevices();                    ///< read CAN messages

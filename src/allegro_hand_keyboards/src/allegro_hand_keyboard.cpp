@@ -102,26 +102,11 @@ void AHKeyboard::printUsage() {
   std::cout << "\tPinch (index+thumb):\t\t'P'" << std::endl;
   std::cout << "\tPinch (middle+thumb):\t\t'M'" << std::endl;
   std::cout << "\tGrasp (3 fingers):\t\t'G'" << std::endl;
-  std::cout << "\tGrasp (4 fingers):\t\t'F'" << std::endl;
+  std::cout << "\tGrasp (4 fingers):\t\t'K'" << std::endl;
   std::cout << "\tGrasp (envelop):\t\t'E'" << std::endl;
-  std::cout << "\tGravity compensation:\t\t'Z'" << std::endl;
-  std::cout << "\tFingertip sensor reset:\t\t'R'" << std::endl;
-  std::cout << "\tMotors Off (free motion):\t'O'" << std::endl;
+  std::cout << "\tGravity compensation:\t\t'A'" << std::endl;
+  std::cout << "\tMotors Off (free motion):\t'F'" << std::endl;
 
-  //std::cout << " -----------------------------------------------------------------------------" << std::endl;
-  //std::cout << "  MOVE IT\t(Need to install moveit package)" << std::endl;
-  //std::cout << " -----------------------------------------------------------------------------" << std::endl;
-  //std::cout << "\tPD Control (Custom Pose) :\t'0 ~ 9'" << std::endl;
-  //std::cout << "\tSave Latest Moveit Pose:\t'Space + 0 ~ 9'" << std::endl;
-
-  //std::cout << " -----------------------------------------------------------------------------" << std::endl;
-  //std::cout << "  OCTAVE\t(Need to install Octave)" << std::endl;
-  //std::cout << " -----------------------------------------------------------------------------" << std::endl;
-  //std::cout << "\tSave Data & Plot:\t\t'S'" << std::endl;
-  //std::cout << " -----------------------------------------------------------------------------" << std::endl;
-  //std::cout << "  Note: Unless elsewhere implemented, these keyboard commands only work with " << std::endl;
-  //std::cout << "  the 'allegro_hand_core_grasp' and 'allegro_hand_core_grasp_slp' packages." << std::endl;
-  std::cout << "  Subscriber code for reading these messages is included in '~core_template'." << std::endl;
   std::cout << " -----------------------------------------------------------------------------\n" << std::endl;
 
 }
@@ -186,78 +171,51 @@ void AHKeyboard::keyLoop()
       case VK_SPACE:
         space_pressed = true;
         break;
+
       case KEYCODE_h:
         RCLCPP_DEBUG(this->get_logger(), "h_key: Home");
-        ss << "home3";
+        ss << "home";
         dirty = true;
         break;
-      case KEYCODE_R:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: finger tip reset");
-        ss << "sensor";
-        dirty = true;
-        break;
-        
-      case KEYCODE_H:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: Home2");
-        ss << "home2";
-        dirty = true;
-        break;  
 
-      case KEYCODE_s:
-        RCLCPP_DEBUG(this->get_logger(), "s_key: save");
-        ss << "save";
-        dirty = true;
-      break;
-
-      case KEYCODE_S:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: sphere2");
-        ss << "sphere2";
-        dirty = true;
-      break;
-
-      case KEYCODE_t:
-        RCLCPP_DEBUG(this->get_logger(), "t_key: home3");
-        ss << "home3";
-        dirty = true;
-      break;
-
-      case KEYCODE_r:
-        RCLCPP_DEBUG(this->get_logger(), "r_key: fingertip reset");
-        ss << "sensor";
-        dirty = true;
-        break;
       case KEYCODE_g:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: Home");
+        RCLCPP_DEBUG(this->get_logger(), "g_key: grasp_3");
         ss << "grasp_3";
         dirty = true;
         break;
-      case KEYCODE_f:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: Home");
+
+      case KEYCODE_k:
+        RCLCPP_DEBUG(this->get_logger(), "k_key: grasp_4");
         ss << "grasp_4";
         dirty = true;
         break;
+
       case KEYCODE_p:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: Home");
+        RCLCPP_DEBUG(this->get_logger(), "p_key: pinch_it");
         ss << "pinch_it";
         dirty = true;
         break;
+
       case KEYCODE_m:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: Home");
+        RCLCPP_DEBUG(this->get_logger(), "m_key: pinch_mt");
         ss << "pinch_mt";
         dirty = true;
         break;
+
       case KEYCODE_e:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: Home");
+        RCLCPP_DEBUG(this->get_logger(), "e_key: envelop");
         ss << "envelop";
         dirty = true;
         break;
-      case KEYCODE_z:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: Home");
+
+      case KEYCODE_a:
+        RCLCPP_DEBUG(this->get_logger(), "a_key: gravcomp");
         ss << "gravcomp";
         dirty = true;
         break;
-      case KEYCODE_o:
-        RCLCPP_DEBUG(this->get_logger(), "h_key: Home");
+
+      case KEYCODE_f:
+        RCLCPP_DEBUG(this->get_logger(), "f_key: off");
         ss << "off";
         dirty = true;
         break;

@@ -181,10 +181,10 @@ void AllegroHandDrv::resetJointInfoReady()
 void AllegroHandDrv::setTorque(double *torque)
 {
         for (int findex = 0; findex < 4; findex++) {
-            _desired_torque[4 * findex + 0] = torque[4 * findex + 0] * 1.43 * 1000;// _desired_torque[4 * findex + 0] = torque[4 * findex + 0] * 0.57 * 1000;
-            _desired_torque[4 * findex + 1] = torque[4 * findex + 1] * 1.43 * 1000;//_desired_torque[4 * findex + 1] = torque[4 * findex + 1] * 0.57 * 1000;
-            _desired_torque[4 * findex + 2] = torque[4 * findex + 2] * 1.43 * 1000;//_desired_torque[4 * findex + 2] = torque[4 * findex + 2] * 0.57 * 1000;
-            _desired_torque[4 * findex + 3] = torque[4 * findex + 3] * 1.43 * 1000;//_desired_torque[4 * findex + 3] = torque[4 * findex + 3] * 0.57 * 1000;
+            _desired_torque[4 * findex + 0] = torque[4 * findex + 0] * 1.43 * 1000;
+            _desired_torque[4 * findex + 1] = torque[4 * findex + 1] * 1.43 * 1000;
+            _desired_torque[4 * findex + 2] = torque[4 * findex + 2] * 1.43 * 1000;
+            _desired_torque[4 * findex + 3] = torque[4 * findex + 3] * 1.43 * 1000;
         }
         if(!HAND_TYPE_A)
         {
@@ -237,7 +237,7 @@ void AllegroHandDrv::_writeDevices()
 
     for (int findex = 0; findex < 4; findex++) {
         CANAPI::command_set_torque(_can_handle, findex, &pwm[findex*4]);
-       // printf("write torque %d: %d %d %d %d", findex, pwm[findex*4+0], pwm[findex*4+1], pwm[findex*4+2], pwm[findex*4+3]);
+       
     }
 }
 
@@ -263,14 +263,12 @@ void AllegroHandDrv::_parseMessage(int id, int len, unsigned char* data)
             printf(">CAN(%d): AllegroHand serial number: SAH0%d0 %c%c%c%c%c%c%c%c\n", _can_handle, /*HAND_VERSION*/4
                     , data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
             printf("                      hardware type: %s\n", (data[3] == 'R' ? "right" : "left"));
-        if(data[2] == 'A')
-        {
-          HAND_TYPE_A = true;
-        }
-        else
-        {
-          HAND_TYPE_A = false;
-        }
+        
+        if(data[2] == 'A') HAND_TYPE_A = true;
+        else HAND_TYPE_A = false;
+
+        if(data[3] == 'R') RIGHT_HAND = true;
+        else RIGHT_HAND  = false;       
           
         }
             break;
@@ -328,8 +326,15 @@ void AllegroHandDrv::_parseMessage(int id, int len, unsigned char* data)
             fingertip_sensor[findex] = fingertip1;
             fingertip_sensor[findex + 1] = fingertip2;
 
-            if(fingertip_sensor[findex]<0) fingertip_sensor[findex] = 0;
-            if(fingertip_sensor[findex + 1]<0) fingertip_sensor[findex + 1] = 0;
+            float alpha = 0.25;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((fingertip_sensor[i] < 0) || (fingertip_sensor[i] > 5000))
+                        fingertip_sensor[i] = 0;
+
+                fingertip_sensor[i] = alpha * fingertip_sensor[i] + (1 - alpha) * fingertip_sensor_pre[i];
+                fingertip_sensor_pre[i] = fingertip_sensor[i];
+            }
             
             //printf("fingertip_sensor[%d] = %d, fingertip_sensor2[%d] = %d\n\n",findex, fingertip_sensor[findex], findex+1,fingertip_sensor[findex + 1]);
         }
