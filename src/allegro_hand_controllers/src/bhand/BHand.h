@@ -23,6 +23,10 @@
  * - Data: 2012/08/31
  * @section MODIFYINFO
  * - 2012/08/31: Commit this document. (by Sean)
+ * @section MODIFYINFO
+ * - Author: Soohoon (Hibo) Yang
+ * - Data: 2012/08/31
+ * - 2024/10/23: Change several algorithm. (by Hibo)
  */
 
 #ifndef __BHAND_H__
@@ -42,22 +46,16 @@ enum eMotionType
 {
 	eMotionType_NONE,				///< power off
 	eMotionType_HOME,				///< go to home position
-	eMotionType_READY,				///< finger position move motion (ready)
-	eMotionType_GRAVITY_COMP,		///< finger position move motion (gravity compensation)
-	eMotionType_PRE_SHAPE,			///<
 	eMotionType_GRASP_3,			///< grasping using 3 fingers
 	eMotionType_GRASP_4,			///< grasping using 4 fingers
 	eMotionType_PINCH_IT,			///< pinching using index finger and thumb
 	eMotionType_PINCH_MT,			///< pinching using middle finger and thumb
-	eMotionType_OBJECT_MOVING,		///<
 	eMotionType_ENVELOP,			///< enveloping
 	eMotionType_JOINT_PD,			///< joint pd control
-	eMotionType_MOVE_OBJ,
-	eMotionType_FINGERTIP_MOVING,
-	eMotionType_DRILL,
-	eMotionType_HOME2,
-	eMotionType_HOME3,
-	eMotionType_SAVE,
+	eMotionType_GRAVITY_COMP,		///< gravity compensation
+	eMotionType_SAVE,				///< saving current pose
+	eMotionType_A,					///< set Hand type to A(NON-GEARED)
+	eMotionType_B,					///< set Hand type to B(GEARED)
 	NUMBER_OF_MOTION_TYPE
 };
 
@@ -71,11 +69,22 @@ enum eHandType
 	eHandType_Right					///< right hand
 };
 
+enum eHardwareType
+{
+	eHardwareType_B = 0,				///< Geared
+	eHardwareType_A					///< non - Geared
+};
+
 /**
  * BHand class.
  * @brief Allegro Hand grasping algorithm.
  * @author Jihoon Bae, SimLab
+ * 
+ * Modified information
+ * @brief Change several control gain & add serveral algorithm.
+ * @author Soohoon Yang, WonikRobotics
  */
+
 class BHANDEXPORT BHand
 {
 public:
@@ -191,6 +200,8 @@ public:
 	void SetOrientation(double roll, double pitch, double yaw);
 	void SetOrientation(double R[9]);
 
+	void SetMotiontime(double time);
+
 
 private:
 	BHand();
@@ -199,41 +210,31 @@ private:
 	void SolveFKLeft();
 	void SolveFKRight();
 	void CalculateJacobian();
-	//void CalculateJacobianLeft();
-	//void CalculateJacobianRight();
 	void CalculateGravity();
 	void CalculateGravityEx();
-	//void CalculateGravityLeft();
-	//void CalculateGravityRight();
 
 	void Motion_HomePosition();
-	void Motion_Ready();
 	void Motion_GravityComp();
-	void Motion_ReadyToMove();
-	void Motion_PreShape();
 	void Motion_Grasp3();
 	void Motion_Grasp4();
 	void Motion_PinchIT();
 	void Motion_PinchMT();
-	void Motion_ObjectMoving();
-	void Motion_FingertipMoving();
 	void Motion_Envelop();
 	void Motion_JointPD();
-	void Motion_Drill();
-	void Motion_HomePosition2();
-	void Motion_HomePosition3();
 	void Motion_Save();
+
 private:
 	double _dT;							///< control time step (second)
 	double _curT;
 	int flag;
 
-	double _Time;	
+
 	double _loopcount;
 	
 	eHandType _handType;				///> whether it is for left hand or right
 	eMotionType _motionType;			///< type of motion currently set
-	
+	eHardwareType _hardwareType;		///> whether it is for Geared or non-Geared Hand
+
 	double _q[NOF][NOJ];				///< current joint angle (radian)
 	double _q_filtered[NOF][NOJ];		///< current joint angle (radian, low pass filtered)
 	double _q_pre[NOF][NOJ];			///< previous(last) joint angle (radian)
@@ -307,10 +308,9 @@ private:
 
 	double _mass[NOF][NOJ];				///< link mass
 
-	double q_error[NOF][NOJ], q_error_sum[NOF][NOJ], init_q[NOF][NOJ];
-	double q_error1[NOF][NOJ], dq_error1[NOF][NOJ];
 };
 
+extern double _Time;
 BHAND_EXTERN_C_BEGIN
 
 /**

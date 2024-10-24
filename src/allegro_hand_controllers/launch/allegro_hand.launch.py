@@ -57,7 +57,6 @@ def generate_launch_description():
     return LaunchDescription([
         declare_visualize_arg,
         declare_polling_arg,
-        declare_moveit_arg,
         OpaqueFunction(function=setup_can0),
         Node(
             package='allegro_hand_controllers',

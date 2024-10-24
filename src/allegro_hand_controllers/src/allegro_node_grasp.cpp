@@ -16,8 +16,7 @@ std::string data_path;
 
 // Define a map from string (received message) to eMotionType (Bhand controller grasp).
 std::map<std::string, eMotionType> bhand_grasps = {
-        {"home",     eMotionType_HOME},   // home position
-        {"ready",    eMotionType_READY},  // ready position
+        {"home",     eMotionType_HOME},   // home position  
         {"grasp_3",  eMotionType_GRASP_3},  // grasp with 3 fingers
         {"grasp_4",  eMotionType_GRASP_4},  // grasp with 4 fingers
         {"pinch_it", eMotionType_PINCH_IT},  // pinch, index & thumb
@@ -25,13 +24,12 @@ std::map<std::string, eMotionType> bhand_grasps = {
         {"envelop",  eMotionType_ENVELOP},  // envelop grasp (power-y)
         {"off",      eMotionType_NONE},  // turn joints off
         {"gravcomp", eMotionType_GRAVITY_COMP},  // gravity compensation
-        {"home3", eMotionType_HOME3}, // (pdcontrol) home position
 };
 
 
 AllegroNodeGrasp::AllegroNodeGrasp(const std::string nodeName)
         : AllegroNode(nodeName),pBHand(nullptr) {
-  initController(whichHand);
+  initController(whichHand,whichType);
 
   joint_cmd_sub = this->create_subscription<sensor_msgs::msg::JointState>(
           DESIRED_STATE_TOPIC, 3, std::bind(&AllegroNodeGrasp::setJointCallback, this, std::placeholders::_1));
@@ -56,9 +54,9 @@ void AllegroNodeGrasp::libCmdCallback(const std_msgs::msg::String::SharedPtr msg
     pBHand->SetMotionType(itr->second);
     RCLCPP_INFO(this->get_logger(), "motion type = %d", itr->second);
 
-    if (itr->second == 1) {
+    if (itr->second == 0 || itr->second == 1) {
       command_place(_can_handle);
-    } else if (itr->second == 5 || itr->second == 7) {
+    } else {
       command_pick(_can_handle);
     }
 
@@ -148,7 +146,7 @@ void AllegroNodeGrasp::computeDesiredTorque() {
   
 }
 
-void AllegroNodeGrasp::initController(const std::string &whichHand) {
+void AllegroNodeGrasp::initController(const std::string &whichHand, const std::string &whichType) {
   // Initialize BHand controller
   if (whichHand == "left") {
     pBHand = new BHand(eHandType_Left);
@@ -157,6 +155,17 @@ void AllegroNodeGrasp::initController(const std::string &whichHand) {
     pBHand = new BHand(eHandType_Right);
     RCLCPP_WARN(this->get_logger(), "CTRL: Right Allegro Hand controller initialized.");
   }
+  
+  if(whichType == "A"){
+    pBHand->SetMotionType(eHardwareType_A);
+    RCLCPP_WARN(this->get_logger(), "CTRL: A-Type Allegro Hand controller initialized.");
+  } 
+  else{
+    pBHand->SetMotionType(eHardwareType_B);
+    RCLCPP_WARN(this->get_logger(), "CTRL: B-Type Allegro Hand controller initialized.");
+  } 
+
+
   pBHand->SetTimeInterval(ALLEGRO_CONTROL_TIME_INTERVAL);
   pBHand->SetMotionType(eMotionType_NONE);
 

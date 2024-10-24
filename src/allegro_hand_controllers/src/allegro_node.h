@@ -73,6 +73,8 @@ class AllegroNode: public rclcpp::Node {
 
   std::string whichHand;  // Right or left hand.
 
+  std::string whichType;  // non-Geared or Geared hand.
+
   // ROS stuff
   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub;
   rclcpp::Time t_last_pub;

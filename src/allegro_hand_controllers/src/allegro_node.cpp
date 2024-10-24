@@ -40,6 +40,9 @@ AllegroNode::AllegroNode(const std::string nodeName, bool sim /* = false */)
   declare_parameter("hand_info/which_hand", "Right");
   whichHand = get_parameter("hand_info/which_hand").as_string();
 
+  declare_parameter("hand_info/which_type", "A");
+  whichType = get_parameter("hand_info/which_type").as_string();
+
   // Initialize CAN device
   canDevice = 0;
   if(!sim) {
@@ -123,6 +126,7 @@ void AllegroNode::updateController() {
       // update joint positions:
       canDevice->getJointInfo(current_position);
 
+      //printf("current_position[12] = %lf, current_position[13] = %lf\n", current_position[12],current_position[13]);
       // low-pass filtering:
       for (int i = 0; i < DOF_JOINTS; i++) {
         current_position_filtered[i] = current_position[i];
@@ -137,7 +141,7 @@ void AllegroNode::updateController() {
         if ((fingertip_sensor[0] + fingertip_sensor[1] + fingertip_sensor[3]) > 200)
           f[0] = f[1] = f[2] = 2.0f;
         else
-          f[0] = f[1] = f[2] = 0.8f;
+          f[0] = f[1] = f[2] = 1.0f;
       }
 
 
@@ -156,6 +160,46 @@ void AllegroNode::updateController() {
 
       frame++;
     }
+
+    if(frame == 1)
+    {
+
+      if(whichHand.compare("left") == 0)
+      {
+        if(canDevice->RIGHT_HAND){
+        RCLCPP_ERROR(this->get_logger(),"WRONG HANDEDNESS DETECTED!");
+        canDevice = 0;
+        return;
+        }
+      }
+      else
+      {
+        if(!canDevice->RIGHT_HAND){
+        RCLCPP_ERROR(this->get_logger(),"WRONG HANDEDNESS DETECTED!");
+        canDevice = 0;
+        return;
+        }
+      }
+
+      if(whichType.compare("A") == 0)
+      {
+        if(!canDevice->HAND_TYPE_A){
+        RCLCPP_ERROR(this->get_logger(),"WRONG TYPE DETECTED!");
+        canDevice = 0;
+        return;
+        }
+      }
+      else
+      {
+        if(canDevice->HAND_TYPE_A){
+        RCLCPP_ERROR(this->get_logger(),"WRONG TYPE DETECTED!");
+        canDevice = 0;
+        return;
+        }
+      }
+      
+    }
+
   }
 
   if (lEmergencyStop < 0) {
