@@ -25,7 +25,7 @@
  * - 2012/08/31: Commit this document. (by Sean)
  * @section MODIFYINFO
  * - Author: Soohoon (Hibo) Yang
- * - Data: 2012/08/31
+ * - Data: 2024/10/23
  * - 2024/10/23: Change several algorithm. (by Hibo)
  */
 
@@ -96,7 +96,7 @@ public:
 	 * @return It returns hand type, whether it is left or right hand.
 	 * @see eHandType
 	 */
-	eHandType GetType();
+	void GetType(eHardwareType hwt);
 
 	/**
 	 * Set time interval.
@@ -232,8 +232,7 @@ private:
 	double _loopcount;
 	
 	eHandType _handType;				///> whether it is for left hand or right
-	eMotionType _motionType;			///< type of motion currently set
-	eHardwareType _hardwareType;		///> whether it is for Geared or non-Geared Hand
+	eMotionType _motionType;			///< type of motion currently set		///> whether it is for Geared or non-Geared Hand
 
 	double _q[NOF][NOJ];				///< current joint angle (radian)
 	double _q_filtered[NOF][NOJ];		///< current joint angle (radian, low pass filtered)
@@ -311,6 +310,9 @@ private:
 };
 
 extern double _Time;
+
+inline eHardwareType _hardwareType;
+
 BHAND_EXTERN_C_BEGIN
 
 /**
