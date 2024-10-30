@@ -155,16 +155,16 @@ void AllegroNodeGrasp::initController(const std::string &whichHand, const std::s
     pBHand = new BHand(eHandType_Right);
     RCLCPP_WARN(this->get_logger(), "CTRL: Right Allegro Hand controller initialized.");
   }
-  
+
+
   if(whichType == "A"){
-    pBHand->SetMotionType(eHardwareType_A);
+    pBHand->GetType(eHardwareType_A);
     RCLCPP_WARN(this->get_logger(), "CTRL: A-Type Allegro Hand controller initialized.");
   } 
   else{
-    pBHand->SetMotionType(eHardwareType_B);
+    pBHand->GetType(eHardwareType_B);
     RCLCPP_WARN(this->get_logger(), "CTRL: B-Type Allegro Hand controller initialized.");
   } 
-
 
   pBHand->SetTimeInterval(ALLEGRO_CONTROL_TIME_INTERVAL);
   pBHand->SetMotionType(eMotionType_NONE);
