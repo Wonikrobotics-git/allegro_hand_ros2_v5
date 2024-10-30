@@ -1,8 +1,8 @@
 
 # Allegro Hand V5 ROS2
 
-This is the official release to control Allegro Hand V5 with ROS2. Mostly, it is based on the old release of Allegro Hand V5 ROS1 package.
-You can find our latest Allegro Hand V5 ROS1 package :(https://github.com/Wonikrobotics-git/allegro_hand_ros_v4)
+This is the official release to control Allegro Hand V5 with ROS2(**Only V5 supported, V4 is not supported**). Mostly, it is based on the release of Allegro Hand V5 ROS1 package.
+You can find our latest Allegro Hand V5 ROS1 package :(https://github.com/Wonikrobotics-git/allegro_hand_ros_v5)
 And the interfaces and controllers have been improved and rewritten by Soohoon Yang(Hibo) from Wonik Robotics.
 
 We have integrated the core elements of two ROS packages(allegro_hand_description, allegro_hand_parameters) into a main package(allegro_hand_controllers).
@@ -85,7 +85,7 @@ ros2 run allegro_hand_keyboards allegro_hand_keyboard
 
 Same as the ROS1 package, you can simply control Allegro Hand V5 by launching *allegro_hand.launch.py* . At a minimum, you must specify the handedness and the hand type:
 ~~~bash
-roslaunch allegro_hand_controllers allegro_hand.launch HAND:=right|left TYPE:=A|B
+ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right|left TYPE:=A|B
 ~~~
 
 Optional arguments:
@@ -97,4 +97,33 @@ VISUALIZE:=true|false (default is false)
 ~~~bash
 ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right TYPE:=A VISUALIZE:=true
 ~~~
+
+## Control more than one hand
+
+To control more than one hand, you must specify CAN port number and Allegro Hand number.
+
+Terminal 1:
+~~~bash
+ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right TYPE:=A CAN_DEVICE:=can0 NUM:=0
+~~~
+
+Termianl 2:
+~~~bash
+ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=left TYPE:=A CAN_DEVICE:=can1 NUM:=1
+~~~
+
+To control first hand,
+
+Terminal 3:
+~~~bash
+ros2 run allegro_hand_keyboards allegro_hand_keyboard --ros-args allegroHand_0/lib_cmd:=allegroHand_0/lib_cmd
+~~~
+
+To control second hand,
+
+Terminal 4:
+~~~bash
+ros2 run allegro_hand_keyboards allegro_hand_keyboard --ros-args allegroHand_0/lib_cmd:=allegroHand_1/lib_cmd
+~~~
+
 
