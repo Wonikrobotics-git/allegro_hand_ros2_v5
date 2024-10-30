@@ -34,7 +34,7 @@ private:
 
 AHKeyboard::AHKeyboard() : Node("allegro_hand_keyboard")
 {
-  cmd_pub_ = this->create_publisher<std_msgs::msg::String>("allegroHand/lib_cmd", 10);
+  cmd_pub_ = this->create_publisher<std_msgs::msg::String>("allegroHand_0/lib_cmd", 10);
 }
 
 
