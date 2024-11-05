@@ -64,9 +64,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.165"/>
     </collision>
     <inertial>
-      <mass value="0.0119"/>
+      <mass value="0.0176"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="1.01666658333e-06" ixy="0.0" ixz="0.0" iyy="6.47677333333e-07" iyz="0.0" izz="1.01666658333e-06"/>
+      <inertia ixx="1.2854008e-05" ixy="2.04e-08" ixz="1.89e-06" iyy="1.225e-05" iyz="1.51e-07" izz="2.999e-06"/>
     </inertial>
   </link>
   <joint name="joint_0_0" type="revolute">
@@ -93,9 +93,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.145"/>
     </collision>
     <inertial>
-      <mass value="0.065"/>
+      <mass value="0.066"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="7.95654166667e-05" ixy="1.7199e-05" ixz="8.75875e-06" iyy="2.47088833333e-05" iyz="2.413125e-05" izz="7.95654166667e-05"/>
+      <inertia ixx="6.2497616e-06" ixy="0.0000e-06" ixz="-1.892683e-06" iyy="3.1284129e-05" iyz="0.0000e-06" izz="2.9004797e-05"/>
     </inertial>
   </link>
   <joint name="joint_1_0" type="revolute">
@@ -122,9 +122,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.0945"/>
     </collision>
     <inertial>
-      <mass value="0.0355"/>
+      <mass value="0.0366"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="2.63979183333e-05" ixy="6.67968e-06" ixz="4.783625e-06" iyy="1.34948516667e-05" iyz="9.372e-06" izz="2.63979183333e-05"/>
+      <inertia ixx="3.8070280e-06" ixy="5.7154287e-03" ixz="-9.9708657e-07" iyy="1.4547214e-05" iyz="2.632663e-04" izz="1.2905337e-05"/>
     </inertial>
   </link>
   <joint name="joint_2_0" type="revolute">
@@ -151,9 +151,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.0561"/>
     </collision>
     <inertial>
-      <mass value="0.0096"/>
+      <mass value="0.00569"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="4.701248e-06" ixy="1.255968e-06" ixz="1.2936e-06" iyy="3.649312e-06" iyz="1.7622e-06" izz="4.701248e-06"/>
+      <inertia ixx="1.176928e-06" ixy="5.0891669e-03" ixz="0.000000e-06" iyy="2.40127e-06" iyz="-5.3128971e-11" izz="1.674842e-06"/>
     </inertial>
   </link>
   <joint name="joint_3_0" type="revolute">
@@ -182,7 +182,7 @@
        <origin rpy="0 0 -1.57" xyz="-0.05482 -0.01393 -0.00995"/>
     </collision>
     <inertial>
-      <mass value="0.0168"/>
+      <mass value="0.00"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="9.68e-07" ixy="0" ixz="0" iyy="9.68e-07" iyz="0" izz="9.68e-07"/>
     </inertial>
@@ -208,9 +208,9 @@
         <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.165"/>
     </collision>
     <inertial>
-      <mass value="0.0119"/>
+      <mass value="0.0176"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="1.01666658333e-06" ixy="0.0" ixz="0.0" iyy="6.47677333333e-07" iyz="0.0" izz="1.01666658333e-06"/>
+      <inertia ixx="1.2854008e-05" ixy="2.04e-08" ixz="1.89e-06" iyy="1.225e-05" iyz="1.51e-07" izz="2.999e-06"/>
     </inertial>
   </link>
   <joint name="joint_4_0" type="revolute">
@@ -237,9 +237,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.145"/>
     </collision>
     <inertial>
-      <mass value="0.065"/>
+      <mass value="0.066"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="7.95654166667e-05" ixy="1.7199e-05" ixz="8.75875e-06" iyy="2.47088833333e-05" iyz="2.413125e-05" izz="7.95654166667e-05"/>
+      <inertia ixx="6.2497616e-06" ixy="0.0000e-06" ixz="-1.892683e-06" iyy="3.1284129e-05" iyz="0.0000e-06" izz="2.9004797e-05"/>
     </inertial>
   </link>
   <joint name="joint_5_0" type="revolute">
@@ -266,9 +266,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.0945"/>
     </collision>
     <inertial>
-      <mass value="0.0355"/>
+      <mass value="0.0366"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="2.63979183333e-05" ixy="6.67968e-06" ixz="4.783625e-06" iyy="1.34948516667e-05" iyz="9.372e-06" izz="2.63979183333e-05"/>
+      <inertia ixx="3.8070280e-06" ixy="5.7154287e-03" ixz="-9.9708657e-07" iyy="1.4547214e-05" iyz="2.632663e-04" izz="1.2905337e-05"/>
     </inertial>
   </link>
   <joint name="joint_6_0" type="revolute">
@@ -295,9 +295,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.0561"/>
     </collision>
     <inertial>
-      <mass value="0.0096"/>
+      <mass value="0.00569"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="4.701248e-06" ixy="1.255968e-06" ixz="1.2936e-06" iyy="3.649312e-06" iyz="1.7622e-06" izz="4.701248e-06"/>
+      <inertia ixx="1.176928e-06" ixy="5.0891669e-03" ixz="0.000000e-06" iyy="2.40127e-06" iyz="-5.3128971e-11" izz="1.674842e-06"/>
     </inertial>
   </link>
   <joint name="joint_7_0" type="revolute">
@@ -326,7 +326,7 @@
        <origin rpy="0 0 -1.57" xyz="-0.05482 -0.01393 -0.00995"/>
     </collision>
     <inertial>
-      <mass value="0.0168"/>
+      <mass value="0.00"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="9.68e-07" ixy="0" ixz="0" iyy="9.68e-07" iyz="0" izz="9.68e-07"/>
     </inertial>
@@ -354,9 +354,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.165"/>
     </collision>
     <inertial>
-      <mass value="0.0119"/>
+      <mass value="0.0176"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="1.01666658333e-06" ixy="0.0" ixz="0.0" iyy="6.47677333333e-07" iyz="0.0" izz="1.01666658333e-06"/>
+      <inertia ixx="1.2854008e-05" ixy="2.04e-08" ixz="1.89e-06" iyy="1.225e-05" iyz="1.51e-07" izz="2.999e-06"/>
     </inertial>
   </link>
   <joint name="joint_8_0" type="revolute">
@@ -383,9 +383,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.145"/>
     </collision>
     <inertial>
-      <mass value="0.065"/>
+      <mass value="0.066"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="7.95654166667e-05" ixy="1.7199e-05" ixz="8.75875e-06" iyy="2.47088833333e-05" iyz="2.413125e-05" izz="7.95654166667e-05"/>
+      <inertia ixx="6.2497616e-06" ixy="0.0000e-06" ixz="-1.892683e-06" iyy="3.1284129e-05" iyz="0.0000e-06" izz="2.9004797e-05"/>
     </inertial>
   </link>
   <joint name="joint_9_0" type="revolute">
@@ -412,9 +412,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.0945"/>
     </collision>
     <inertial>
-      <mass value="0.0355"/>
+      <mass value="0.0366"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="2.63979183333e-05" ixy="6.67968e-06" ixz="4.783625e-06" iyy="1.34948516667e-05" iyz="9.372e-06" izz="2.63979183333e-05"/>
+      <inertia ixx="3.8070280e-06" ixy="5.7154287e-03" ixz="-9.9708657e-07" iyy="1.4547214e-05" iyz="2.632663e-04" izz="1.2905337e-05"/>
     </inertial>
   </link>
   <joint name="joint_10_0" type="revolute">
@@ -441,9 +441,9 @@
       <origin rpy="0 0 -1.57" xyz="-0.025 -0.019 0.0561"/>
     </collision>
     <inertial>
-      <mass value="0.0096"/>
+      <mass value="0.00569"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="4.701248e-06" ixy="1.255968e-06" ixz="1.2936e-06" iyy="3.649312e-06" iyz="1.7622e-06" izz="4.701248e-06"/>
+      <inertia ixx="1.176928e-06" ixy="5.0891669e-03" ixz="0.000000e-06" iyy="2.40127e-06" iyz="-5.3128971e-11" izz="1.674842e-06"/>
     </inertial>
   </link>
   <joint name="joint_11_0" type="revolute">
@@ -472,7 +472,7 @@
       <origin rpy="0 0 -1.57" xyz="-0.05482 -0.01393 -0.00995"/>
     </collision>
     <inertial>
-      <mass value="0.0168"/>
+      <mass value="0.00"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="9.68e-07" ixy="0" ixz="0" iyy="9.68e-07" iyz="0" izz="9.68e-07"/>
     </inertial>
@@ -593,7 +593,7 @@
       <origin rpy="3.14 3.14 1.57" xyz="-0.149 -0.061 0.096"/>
     </collision>
     <inertial>
-      <mass value="0.0334"/>
+      <mass value="0.0338"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="2.94e-06" ixy="1.244e-07" ixz="3.52e-07" iyy="1.13e-05" iyz="-3.11e-08" izz="1.06e-05"/>
     </inertial>
@@ -624,7 +624,7 @@
       <origin rpy="0 0 3.14" xyz="-0.014 0.0545 -0.0172"/>
     </collision>
     <inertial>
-      <mass value="0.0014"/>
+      <mass value="0.00"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <inertia ixx="9.68e-07" ixy="0" ixz="0" iyy="9.68e-07" iyz="0" izz="9.68e-07"/>
     </inertial>
