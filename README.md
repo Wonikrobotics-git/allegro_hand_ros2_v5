@@ -43,8 +43,8 @@ sudo rmmod pcan
 sudo modprobe peak_usb
 
 # Permanent
-rm /etc/modprobe.d/pcan.conf
-rm /etc/modprobe.d/blacklist-peak.conf
+sudo rm /etc/modprobe.d/pcan.conf
+sudo rm /etc/modprobe.d/blacklist-peak.conf
 ~~~
 
 ## Run main controller nodes
