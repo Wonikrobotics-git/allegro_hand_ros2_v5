@@ -78,6 +78,9 @@ colcon build
 source install/setup.bash
 ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right TYPE:=A
 ~~~
+**You need to write your password to open CAN port**
+
+
 **Please check 'Launch file instructions below'.**
 
 6. Run allegro hand keyboard node.
