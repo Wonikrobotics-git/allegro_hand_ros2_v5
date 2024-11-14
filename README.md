@@ -69,6 +69,7 @@ git clone https://github.com/Wonikrobotics-git/allegro_hand_ros2_v5.git
 4. Build.
 ~~~bash
 cd ~/allegro_ws
+source /opt/ros/<distro>/setup.bash
 colcon build
 ~~~
 
