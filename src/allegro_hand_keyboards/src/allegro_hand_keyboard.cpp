@@ -7,10 +7,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "virtualkey_codes.h"
-#include <yaml-cpp/yaml.h>
 #include <fstream>
 #include <vector>
-#include <ament_index_cpp/get_package_prefix.hpp>
 #include "virtualkey_codes.h"
 
 using namespace std;
@@ -48,36 +46,6 @@ void quit(int sig)
   exit(0);
 }
 
-std::vector<double> AHKeyboard::readFinalJointStates()
-{
-  // 입력 받은 숫자에 해당하는 pose 파일 경로 생성
-  std::string pkg_path = ament_index_cpp::get_package_prefix("allegro_hand_controllers");
-  std::string file_path = pkg_path + "/share/allegro_hand_controllers/pose/final_rviz_joints.yaml";
-
-  // pose 파일 읽기
-  YAML::Node node = YAML::LoadFile(file_path);
-  std::vector<double> positions = node["position"].as<std::vector<double>>();
-  return positions;
-}
-
-void AHKeyboard::savePose(const std::string& pose_file)
-{
-  std::vector<double> positions = readFinalJointStates();
-
-  YAML::Emitter out;
-  out << YAML::BeginMap;
-  out << YAML::Key << "position" << YAML::Value << positions;
-  out << YAML::EndMap;
-
-  std::string pkg_path = ament_index_cpp::get_package_prefix("allegro_hand_controllers");
-  std::string file_path = pkg_path + "/share/allegro_hand_controllers/pose/" + pose_file;
-
-  std::ofstream fout(file_path);
-  fout << out.c_str();
-  fout.close();
-  RCLCPP_INFO(this->get_logger(), "Pose saved to %s", pose_file.c_str());
-}
-
 int main(int argc, char** argv)
 {
   rclcpp::init(argc, argv);
@@ -110,17 +78,6 @@ void AHKeyboard::printUsage() {
   std::cout << " -----------------------------------------------------------------------------\n" << std::endl;
 
 }
-
-#define HANDLE_KEYCODE(keycode, pose_num) \
-  case keycode: \
-    if (!space_pressed) { \
-      ss << "pdControl" << pose_num; \
-      dirty = true; \
-    } else { \
-      RCLCPP_DEBUG(this->get_logger(), #keycode "_key: Save Pose " #pose_num); \
-      savePose("pose" #pose_num ".yaml"); \
-    } \
-    break;
 
 
 void AHKeyboard::keyLoop()
@@ -156,17 +113,6 @@ void AHKeyboard::keyLoop()
     RCLCPP_DEBUG(this->get_logger(), "value: 0x%02X", c);
     switch(c)
     {
-
-      HANDLE_KEYCODE(KEYCODE_0, 0)
-      HANDLE_KEYCODE(KEYCODE_1, 1)
-      HANDLE_KEYCODE(KEYCODE_2, 2)
-      HANDLE_KEYCODE(KEYCODE_3, 3)
-      HANDLE_KEYCODE(KEYCODE_4, 4)
-      HANDLE_KEYCODE(KEYCODE_5, 5)
-      HANDLE_KEYCODE(KEYCODE_6, 6)
-      HANDLE_KEYCODE(KEYCODE_7, 7)
-      HANDLE_KEYCODE(KEYCODE_8, 8)
-      HANDLE_KEYCODE(KEYCODE_9, 9)
 
       case VK_SPACE:
         space_pressed = true;
