@@ -1,7 +1,7 @@
 // Common allegro node code used by any node. Each node that implements an
 // AllegroNode must define the computeDesiredTorque() method.
 //
-// Author: Hibo (sh-yang@wonikrobotics.com)
+// Author: Hibo (sh-yang@wonik.com)
 
 #include "allegro_node.h"
 #include "allegro_hand_driver/AllegroHandDrv.h"
@@ -50,7 +50,7 @@ AllegroNode::AllegroNode(const std::string nodeName, bool sim /* = false */)
     declare_parameter("comm/CAN_CH", "can0");
     auto can_ch = this->get_parameter("comm/CAN_CH").as_string();
     if (canDevice->init(can_ch)) {
-        usleep(3000);
+        //rclcpp::usleep(3000);
     }
     else {
         delete canDevice;
