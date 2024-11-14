@@ -54,33 +54,40 @@ sudo rm /etc/modprobe.d/blacklist-peak.conf
 mkdir allegro_ws
 ~~~
 
-2. Download ROS2 package for Allegro Hand V5 using below command.
+2. Install necessart package.
+~~~bash
+sudo apt-get update
+sudo apt-get install ros-<distro>-xacro
+~~~
+
+3. Download ROS2 package for Allegro Hand V5 using below command.
 ~~~bash
 cd ~/allegro_ws
 git clone https://github.com/Wonikrobotics-git/allegro_hand_ros2_v5.git
 ~~~
 
-3. Build.
+4. Build.
 ~~~bash
 cd ~/allegro_ws
 colcon build
 ~~~
 
-4. Launch allegro main node.
+5. Launch allegro main node.
 ~~~bash
 source install/setup.bash
 ros2 launch allegro_hand_controllers allegro_hand.launch.py HAND:=right TYPE:=A
 ~~~
 **Please check 'Launch file instructions below'.**
 
-5. Run allegro hand keyboard node.
+6. Run allegro hand keyboard node.
 ~~~bash
 cd ~/allegro_ws
 source install/setup.bash
 ros2 run allegro_hand_keyboards allegro_hand_keyboard
 ~~~
 
-6. Control Hand using Keyboard command.
+7. Control Hand using Keyboard command.
+
 ## Launch file instructions
 
 Same as the ROS1 package, you can simply control Allegro Hand V5 by launching *allegro_hand.launch.py* . At a minimum, you must specify the handedness and the hand type:
